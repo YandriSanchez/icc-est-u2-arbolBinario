@@ -30,15 +30,60 @@ public class ArbolBinario{
         return padre;
     }
 
-    public void imprimirArbol() {
-        printTree(root);
+    public void imprimirArbolInorden() {
+        printTreeIn(root);
     }
 
-    private void printTree(Node padre) {
+    private void printTreeIn(Node padre) {
         if (padre != null) {
-            printTree(padre.getLeft());
+            printTreeIn(padre.getLeft());
             System.out.print(padre.getValue() + " ");
-            printTree(padre.getRight());
+            printTreeIn(padre.getRight());
+        }
+    }
+
+    public void imprimirArbolPreorden() {
+        printTreePre(root);
+    }
+
+    private void printTreePre(Node padre) {
+        if (padre != null) {
+            System.out.print(padre.getValue() + " ");
+            printTreePre(padre.getLeft());
+            printTreePre(padre.getRight());
+        }
+    }
+
+    public void imprimirArbolPosorden() {
+        printTreePos(root);
+    }
+
+    private void printTreePos(Node padre) {
+        if (padre != null) {
+            printTreePos(padre.getLeft());
+            printTreePos(padre.getRight());
+            System.out.print(padre.getValue() + " ");
+        }
+    }
+
+    public boolean buscar(int value){
+        return buscarRec(root, value);
+    }
+
+    private boolean buscarRec(Node padre, int value){
+        if(padre == null){
+            return false;
+        }
+        if(padre.getValue()==value){
+            return true;
+        }
+
+        if(value < padre.getValue()){
+            //me voy a la izquierda
+            return buscarRec(padre.getLeft(), value);
+        }else{
+            //me voy a la derecha
+            return buscarRec(padre.getRight(), value);
         }
     }
 }

@@ -9,7 +9,19 @@ public class App {
             tree.insert(value);
         }
 
-        tree.imprimirArbol();
+        System.out.println("Inorden");
+        tree.imprimirArbolInorden();
 
+        System.out.println("");
+        System.out.println("Preorden");
+        tree.imprimirArbolPreorden();
+
+        System.out.println("");
+        System.out.println("Postorden");
+        tree.imprimirArbolPosorden();
+
+        System.out.println("");
+        System.out.println("Se encontro el 23?..."+tree.buscar(23));
+        System.out.println("Se encontro el 77?..."+tree.buscar(77));
     }
 }
